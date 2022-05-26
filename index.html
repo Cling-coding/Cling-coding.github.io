@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/23/%E9%97%AE%E6%B1%82OJ/%E7%AC%AC%E5%9B%9B%E5%AD%A6%E6%9C%9F%E7%AC%AC4%E6%AC%A1%E4%BD%9C%E4%B8%9A01/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/15/M3%EF%BC%9Asperf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +180,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/23/%E9%97%AE%E6%B1%82OJ/%E7%AC%AC%E5%9B%9B%E5%AD%A6%E6%9C%9F%E7%AC%AC4%E6%AC%A1%E4%BD%9C%E4%B8%9A01/" class="post-title-link" itemprop="url">聚会地点问题</a>
+            <a href="/2022/05/15/M3%EF%BC%9Asperf/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -190,24 +190,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-23 23:11:00" itemprop="dateCreated datePublished" datetime="2022-03-23T23:11:00+08:00">2022-03-23</time>
+              <time title="创建时间：2022-05-15 22:34:04" itemprop="dateCreated datePublished" datetime="2022-05-15T22:34:04+08:00">2022-05-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 23:19:11" itemprop="dateModified" datetime="2022-03-24T23:19:11+08:00">2022-03-24</time>
+                <time title="修改时间：2022-05-16 23:47:42" itemprop="dateModified" datetime="2022-05-16T23:47:42+08:00">2022-05-16</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
-                </span>
-            </span>
 
           
 
@@ -220,10 +211,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="聚会地点问题"><a href="#聚会地点问题" class="headerlink" title="聚会地点问题"></a>聚会地点问题</h1><p>第四学期问题求解OJ 第4次作业 第一题</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><a target="_blank" rel="noopener" href="https://cscamp.nju.edu.cn/contest/49/problem/2">B. 聚会地点问题 - 问题求解第四学期作业2 - 比赛 - 问题求解OJ (nju.edu.cn)</a></p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>d(i,j)=|X1-X2|+|Y1-Y2|</p>
+          <h1 id="M3-sperf"><a href="#M3-sperf" class="headerlink" title="M3:sperf"></a>M3:sperf</h1><h2 id="strace-API"><a href="#strace-API" class="headerlink" title="strace API"></a>strace API</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man strace | vim -</span><br></pre></td></tr></table></figure>
 
+<h3 id="RTFM（如何获取系统调用的时间）"><a href="#RTFM（如何获取系统调用的时间）" class="headerlink" title="RTFM（如何获取系统调用的时间）"></a>RTFM（如何获取系统调用的时间）</h3><p>每一行包含系统调用的名称和返回值</p>
+<p>error返回-1</p>
+<p>根据options选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-i: print the instruction pointer at the time of the system call</span><br><span class="line">-r: print a relative timestamp upon entry to each system call. This records the time difference between the beginning of successive system calls</span><br><span class="line">-t</span><br><span class="line">-T √</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strace -T :输出系统调用花费的时间</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析出-COMMAND-和-ARG"><a href="#解析出-COMMAND-和-ARG" class="headerlink" title="解析出 COMMAND 和 ARG"></a>解析出 COMMAND 和 ARG</h2><h2 id="连接父子进程的输入"><a href="#连接父子进程的输入" class="headerlink" title="连接父子进程的输入"></a>连接父子进程的输入</h2><h3 id="pipe系统调用"><a href="#pipe系统调用" class="headerlink" title="pipe系统调用"></a>pipe系统调用</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/350dc21fe5e3">pipe() 系统调用 - 简书 (jianshu.com)</a></p>
+<p>父子进程共享管道输入输出端口实现父子进程的数据传输</p>
+<p>fildes[0]=3;  fildes[1]=4</p>
+<h2 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h2><h3 id="fork创建新进程"><a href="#fork创建新进程" class="headerlink" title="fork创建新进程"></a>fork创建新进程</h3><h3 id="execve创建子进程"><a href="#execve创建子进程" class="headerlink" title="execve创建子进程"></a>execve创建子进程</h3><p>子进程要求使用execve调用strace COMMAND ARG启动一份strace</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">execve</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename, <span class="type">char</span> *<span class="type">const</span> argv[], <span class="type">char</span> *<span class="type">const</span> envp[])</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>父进程不断读取strace的输出直到strace结束，并打印要求内容</p>
+<h4 id="execve-RTFM"><a href="#execve-RTFM" class="headerlink" title="execve RTFM"></a>execve RTFM</h4>
       
     </div>
 
@@ -242,7 +246,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/23/05/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/Bin-packing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -256,577 +260,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/23/05/" class="post-title-link" itemprop="url">OS05并发控制：互斥</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-23 20:46:00" itemprop="dateCreated datePublished" datetime="2022-03-23T20:46:00+08:00">2022-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 22:55:36" itemprop="dateModified" datetime="2022-03-24T22:55:36+08:00">2022-03-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="05并发控制：互斥"><a href="#05并发控制：互斥" class="headerlink" title="05并发控制：互斥"></a>05并发控制：互斥</h1><h2 id="互斥问题分析"><a href="#互斥问题分析" class="headerlink" title="互斥问题分析"></a>互斥问题分析</h2><p>Peterson算法以低效率实现互斥</p>
-<p>本节课介绍两种锁的实现：</p>
-<ul>
-<li>自旋锁</li>
-<li>互斥锁</li>
-</ul>
-<p>互斥</p>
-<ul>
-<li><p>实现lock_t数据结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; lock_t;</span><br><span class="line">void lock(lock_t *lk);</span><br><span class="line">void unlock(lock_t *lk);</span><br></pre></td></tr></table></figure></li>
-<li><p>lock/unlock API</p>
-</li>
-</ul>
-<p>当其他线程持有锁时，lock无法返回，一直等待</p>
-<p>实现互斥的<strong>根本困难</strong>：不能同时读写（load、store）共享内存</p>
-<h3 id="perterson-barrier-c代码精读"><a href="#perterson-barrier-c代码精读" class="headerlink" title="perterson-barrier.c代码精读"></a>perterson-barrier.c代码精读</h3><p>是成功的尝试</p>
-<h2 id="原子指令和自旋锁"><a href="#原子指令和自旋锁" class="headerlink" title="原子指令和自旋锁"></a>原子指令和自旋锁</h2><h3 id="lock指令前缀"><a href="#lock指令前缀" class="headerlink" title="lock指令前缀"></a>lock指令前缀</h3><p>内联汇编：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span> <span class="title function_">volatile</span><span class="params">(<span class="string">&quot;lock addq $1, %0&quot;</span>: <span class="string">&quot;+m&quot;</span>(sum))</span>;</span><br></pre></td></tr></table></figure>
-
-<p>lock指令前缀：天黑请闭眼</p>
-<h3 id="xchg指令实现互斥"><a href="#xchg指令实现互斥" class="headerlink" title="xchg指令实现互斥"></a>xchg指令实现互斥</h3><p>xchg本身就是原子指令</p>
-<h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> table = YES;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">lock</span><span class="params">()</span> &#123;</span><br><span class="line">retry:</span><br><span class="line">  <span class="type">int</span> got = xchg(&amp;table, NOPE);</span><br><span class="line">  <span class="keyword">if</span> (got == NOPE)</span><br><span class="line">    <span class="keyword">goto</span> retry;</span><br><span class="line">  assert(got == YES);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">unlock</span><span class="params">()</span> &#123;</span><br><span class="line">  xchg(&amp;table, YES)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> locked = <span class="number">0</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">lock</span><span class="params">()</span> &#123; <span class="keyword">while</span> (xchg(&amp;locked, <span class="number">1</span>)) ; &#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">unlock</span><span class="params">()</span> &#123; xchg(&amp;locked, <span class="number">0</span>); &#125;</span><br></pre></td></tr></table></figure>
-
-<p>两段代码是等价的，实现了自旋锁。</p>
-<h4 id="自旋锁的缺陷"><a href="#自旋锁的缺陷" class="headerlink" title="自旋锁的缺陷"></a>自旋锁的缺陷</h4><ul>
-<li>争抢lock导致线程陷入死循环</li>
-<li>获得自旋锁的线程会被操作系统切换出去</li>
-</ul>
-<h4 id="自旋锁的使用条件"><a href="#自旋锁的使用条件" class="headerlink" title="自旋锁的使用条件"></a>自旋锁的使用条件</h4><ul>
-<li>几乎不出现争抢</li>
-<li>持有自旋锁时禁止执行流切换</li>
-</ul>
-<p>通常的使用场景：操作系统内核的并发数据结构 (短临界区)</p>
-<h2 id="Futex：Fast-Userspace-muTexes"><a href="#Futex：Fast-Userspace-muTexes" class="headerlink" title="Futex：Fast Userspace muTexes"></a>Futex：Fast Userspace muTexes</h2><p>可以直接调用线程库里的互斥锁</p>
-<p>​                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/23/L1%EF%BC%9A%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88pmm%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="SUN Shiyu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="codewithssy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/23/L1%EF%BC%9A%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88pmm%EF%BC%89/" class="post-title-link" itemprop="url">L1物理内存管理（pmm）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-23 17:05:00" itemprop="dateCreated datePublished" datetime="2022-03-23T17:05:00+08:00">2022-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 23:25:21" itemprop="dateModified" datetime="2022-03-24T23:25:21+08:00">2022-03-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">实验记录</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="L1：物理内存管理（pmm）"><a href="#L1：物理内存管理（pmm）" class="headerlink" title="L1：物理内存管理（pmm）"></a>L1：物理内存管理（pmm）</h1><h2 id="框架代码"><a href="#框架代码" class="headerlink" title="框架代码"></a>框架代码</h2><ul>
-<li><p>.<br>├── Makefile<br>├── framework<br>│   ├── kernel.h<br>│   └── main.c<br>├── include<br>│   └── common.h<br>└── src</p>
-<pre><code>├── os.c
-└── pmm.c
-</code></pre>
-<p>3 directories, 6 files</p>
-</li>
-</ul>
-<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/Markdown%20labels/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="SUN Shiyu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="codewithssy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/21/Markdown%20labels/" class="post-title-link" itemprop="url">Markdown 符号大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-21 22:12:00" itemprop="dateCreated datePublished" datetime="2022-03-21T22:12:00+08:00">2022-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-23 21:18:06" itemprop="dateModified" datetime="2022-03-23T21:18:06+08:00">2022-03-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Markdown-数学符号大全"><a href="#Markdown-数学符号大全" class="headerlink" title="Markdown 数学符号大全"></a>Markdown 数学符号大全</h1><h2 id="关系符号"><a href="#关系符号" class="headerlink" title="关系符号"></a>关系符号</h2><h6 id="小于等于-leq"><a href="#小于等于-leq" class="headerlink" title="小于等于$\leq$"></a>小于等于$\leq$</h6><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\leq</span><br></pre></td></tr></table></figure>
-
-<h6 id="大于等于-geq"><a href="#大于等于-geq" class="headerlink" title="大于等于$\geq$"></a>大于等于$\geq$</h6><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\geq</span><br></pre></td></tr></table></figure>
-
-<h6 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h6><p>$\sum_{a}^{b}$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\sum<span class="emphasis">_&#123;a&#125;^&#123;b&#125;$</span></span><br></pre></td></tr></table></figure>
-
-<p>$\sum\limits_{a}^{b}$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\sum\limits<span class="emphasis">_&#123;a&#125;^&#123;b&#125;$</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h6 id="真子集"><a href="#真子集" class="headerlink" title="真子集"></a>真子集</h6><p>$\subseteq$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\subseteq$</span><br></pre></td></tr></table></figure>
-
-<h2 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h2><h6 id="右推导"><a href="#右推导" class="headerlink" title="右推导"></a>右推导</h6><p>$\Rightarrow$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\Rightarrow$</span><br></pre></td></tr></table></figure>
-
-<p>$\rightarrow$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\rightarrow$</span><br></pre></td></tr></table></figure>
-
-<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><h6 id="任意"><a href="#任意" class="headerlink" title="任意"></a>任意</h6><p>$\forall$</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$\forall$</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/%E6%9D%BE%E5%BC%9B%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="SUN Shiyu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="codewithssy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/21/%E6%9D%BE%E5%BC%9B%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">难问题求解——松弛算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-21 21:52:51" itemprop="dateCreated datePublished" datetime="2022-03-21T21:52:51+08:00">2022-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 17:06:03" itemprop="dateModified" datetime="2022-03-24T17:06:03+08:00">2022-03-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="3-7-Relaxation-to-Linear-Programming-对线性规划的松弛"><a href="#3-7-Relaxation-to-Linear-Programming-对线性规划的松弛" class="headerlink" title="3.7 Relaxation to Linear Programming  对线性规划的松弛"></a>3.7 Relaxation to Linear Programming  对线性规划的松弛</h1><p>《问题求解4》课程 第六周学习内容</p>
-<p>教材：[JH]Algorithmics for Hard Problems, Second Edition  《难问题求解》</p>
-<p>内容：JH第3章第7节第1小节、第2小节的集合覆盖问题、第4小节的开头部分</p>
-<h2 id="3-7-1-基本概念"><a href="#3-7-1-基本概念" class="headerlink" title="3.7.1 基本概念"></a>3.7.1 基本概念</h2><h3 id="Linear-Programming-线性规划-LP"><a href="#Linear-Programming-线性规划-LP" class="headerlink" title="Linear Programming 线性规划(LP)"></a>Linear Programming 线性规划(LP)</h3><p>在《算法导论》中学习过线性规划的基本定义</p>
-<p>形式化地描述如下：是一个线性函数最小化或最大化的问题，该线性函数服从一组有限个线性约束。</p>
-<h4 id="0-1-LP、IP：integer-programming"><a href="#0-1-LP、IP：integer-programming" class="headerlink" title="0/1-LP、IP：integer programming"></a>0/1-LP、IP：integer programming</h4><p>区别在于解被限制在集合${0,1}$、整数上，问题的难度提升了，属于NP-hard问题</p>
-<h4 id="线性规划的松弛"><a href="#线性规划的松弛" class="headerlink" title="线性规划的松弛"></a>线性规划的松弛</h4><p><strong>step1: Reduction规约</strong></p>
-<p>将优化问题U的输入实例转化成0/1-LP or IP的输入实例</p>
-<p><strong>step2: Relaxation松弛</strong></p>
-<p>利用一般的线性规划的算法计算出最优解$\alpha$，放宽了解空间的规定</p>
-<p><strong>step3: Solving the original problem</strong></p>
-<p>$cost(\alpha)$是原来问题的解的上限，利用$\alpha$计算原问题的最优解或者是更高质量的近似解</p>
-<p>前两步可以保证在多项式时间内而完成，第三步的时间复杂度根据问题的难度和对于解的要求决定。</p>
-<h2 id="3-7-2-将问题表述为线性规划问题"><a href="#3-7-2-将问题表述为线性规划问题" class="headerlink" title="3.7.2 将问题表述为线性规划问题"></a>3.7.2 将问题表述为线性规划问题</h2><h2 id="线性规划问题的形式"><a href="#线性规划问题的形式" class="headerlink" title="线性规划问题的形式"></a>线性规划问题的形式</h2><h4 id="standard（equality）form"><a href="#standard（equality）form" class="headerlink" title="standard（equality）form"></a><strong>standard（equality）form</strong></h4><p>$线性函数：c^{T}·X=\sum_{i=1}^{n}c_{i}·x_{i}$</p>
-<p>$约束条件1：A·X=b,i.e.,\sum\limits_{i=1}^{n}a_{ji}x_{i}=b_{j}\ for\ j=1..m$</p>
-<p>$约束条件2：x_{i}\geq 0\ for\ i=1..n$</p>
-<p>对于IP而言，需要系数也为整数</p>
-<h4 id="canonical-form"><a href="#canonical-form" class="headerlink" title="canonical form"></a><strong>canonical form</strong></h4><p>$线性函数：c^{T}·X=\sum_{i=1}^{n}c_{i}·x_{i}$</p>
-<p>$约束条件1：A·X\geq b,i.e.,\sum\limits_{i=1}^{n}a_{ji}x_{i}\geq b_{j}\ for\ j=1..m$</p>
-<p>$约束条件2：x_{i}\geq 0\ for\ i=1..n$</p>
-<h4 id="standard-inequality-form"><a href="#standard-inequality-form" class="headerlink" title="standard inequality form"></a><strong>standard inequality form</strong></h4><p>$线性函数：c^{T}·X=\sum_{i=1}^{n}c_{i}·x_{i}$</p>
-<p>$约束条件1：A·X\leq b,i.e.,\sum\limits_{i=1}^{n}a_{ji}x_{i}\leq b_{j}\ for\ j=1..m$</p>
-<p>$约束条件2：x_{i}\geq 0\ for\ i=1..n$</p>
-<h4 id="将canonical形式转换为standard（equality）形式"><a href="#将canonical形式转换为standard（equality）形式" class="headerlink" title="将canonical形式转换为standard（equality）形式"></a>将canonical形式转换为standard（equality）形式</h4><p>引入$surplus\ variable$</p>
-<p>由</p>
-<p>$\sum\limits_{i=1}^{n}a_{ji}x_{i}\geq b_{j}\ $</p>
-<p>得到</p>
-<p>$\sum\limits_{i=1}^{n}a_{ji}x_{i}-s_{j}=b_{j},s_{j}\geq0$</p>
-<p>原来的可行解为：</p>
-<p>$(x_{1},x_{2},\dots,x_{n})$</p>
-<p>现在的可行解为：</p>
-<p>$(x_{1},x_{2},\dots,x_{n},s_{1},s_{2},\dots,s_{m})$</p>
-<p>转化standard inequality form时同理。</p>
-<h4 id="将最大化问题转化为最小化问题"><a href="#将最大化问题转化为最小化问题" class="headerlink" title="将最大化问题转化为最小化问题"></a>将最大化问题转化为最小化问题</h4><p>$目标：maximize\ c^{T}·X=\sum\limits_{i=1}^{n}c_{i}x_{i}$</p>
-<p>等价于</p>
-<p>$minimize\ [(-1)·c^{T}]·X=\sum\limits_{i=1}^{n}(-c_{i})·x_{i}$</p>
-<h4 id="SET-COVER-PROBLEM-集合覆盖问题SCP"><a href="#SET-COVER-PROBLEM-集合覆盖问题SCP" class="headerlink" title="SET COVER PROBLEM 集合覆盖问题SCP"></a>SET COVER PROBLEM 集合覆盖问题SCP</h4><p>布尔变量$x_{i}$含义是是否选择集合$S_{i}$，其中$S_{i}\subseteq X={a_{1},a_{2},\dots,a_{n}}$</p>
-<p>目标函数：</p>
-<p>$minimize\ \sum\limits_{i=1}^{m}x_{i}$</p>
-<p>约束条件：</p>
-<p>$\sum\limits_{j\in Index(k)}x_{j}\geq 1\ for\ k=1,\dots,n.$</p>
-<p>$Index(k)={d\in{1,\dots,m}|a_{k}\in S_{d}}$</p>
-<p>$a_{k}$所在的集合的下标的集合，约束条件即为每个$x_{j}$被选到至少一次，即为覆盖了整个$X$集合</p>
-<h4 id="Minimum-Vertex-Cover-Problem（MIN-VCP）最小点覆盖问题"><a href="#Minimum-Vertex-Cover-Problem（MIN-VCP）最小点覆盖问题" class="headerlink" title="Minimum Vertex Cover Problem（MIN-VCP）最小点覆盖问题"></a>Minimum Vertex Cover Problem（MIN-VCP）最小点覆盖问题</h4><h4 id="MINIMUM-WEIGHTED-VERTEX-COVER最小带权点覆盖问题"><a href="#MINIMUM-WEIGHTED-VERTEX-COVER最小带权点覆盖问题" class="headerlink" title="MINIMUM WEIGHTED VERTEX COVER最小带权点覆盖问题"></a>MINIMUM WEIGHTED VERTEX COVER最小带权点覆盖问题</h4><p>目标：</p>
-<p>$minimize\ \sum\limits_{i=1}^{n}c(v_{i})·x_{i}$</p>
-<p>约束条件：</p>
-<p>$x_{i}+x_{j}\geq 1\ for\ every\ {v_{i},v_{j}}\in E$</p>
-<h4 id="Makespan-Scheduling-Problem（MS）-最小工期调度问题"><a href="#Makespan-Scheduling-Problem（MS）-最小工期调度问题" class="headerlink" title="Makespan Scheduling Problem（MS） 最小工期调度问题"></a>Makespan Scheduling Problem（MS） 最小工期调度问题</h4><p>输入：$p_{1},p_{2},\dots,p_{n}$时间分配到m台相同的机器上</p>
-<p>目标：使得完成所有任务的用时最短</p>
-<p>线性规划形式：</p>
-<p>$x_{ij}\in {0,1}\ for\ i=1,\dots,n,j=1,\dots,m第i个任务分配到第j台机器上$</p>
-<p>$\sum\limits_{j=1}^{m}x_{ij}=1\ for\ all\ i\in{1,\dots,n}保证每个任务都在一台机器上执行过一次$</p>
-<p>$minimize\ t$</p>
-<p>$t-\sum\limits_{i=1}^{n}p_{i}·x_{ij}\geq 0\ for\ all\ j\in{1,\dots,m}$</p>
-<h4 id="优化问题可以自然地规约到0-1-LP问题"><a href="#优化问题可以自然地规约到0-1-LP问题" class="headerlink" title="优化问题可以自然地规约到0/1-LP问题"></a>优化问题可以自然地规约到0/1-LP问题</h4><p>可行解一一对应</p>
-<p>$M_{U}(x)=M_{IP}(y)$，且最优解也同时对应</p>
-<h2 id="3-7-4-Rounding-LP-Duality-and-Primal-Dual-Method"><a href="#3-7-4-Rounding-LP-Duality-and-Primal-Dual-Method" class="headerlink" title="3.7.4 Rounding, LP-Duality and Primal-Dual Method"></a>3.7.4 Rounding, LP-Duality and Primal-Dual Method</h2><h3 id="Rounding方法"><a href="#Rounding方法" class="headerlink" title="Rounding方法"></a>Rounding方法</h3><h4 id="SCP（k-问题"><a href="#SCP（k-问题" class="headerlink" title="SCP（k)问题"></a>SCP（k)问题</h4><p>考虑集合覆盖问题的子问题SCP（k）</p>
-<p>目标：$minimize\ \sum\limits_{i=1}^{m}x_{i}$</p>
-<p>每个元素出现的集合个数最多为k个</p>
-<p>即$\mid Index(a_{j})\mid\leq k$</p>
-<h4 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h4><p>step1:Reduction<br>step2:Relaxation<br>    解空间放宽到$0\leq x_{i}\leq 1$</p>
-<p>step3:Solving the original problem</p>
-<p>​    $Set\ \beta_{i}=1\ iff\ \alpha_{i}\geq \frac{1}{k}$</p>
-<p>output:$\beta=(\beta_{1},\dots,\beta_{m})$</p>
-<h4 id="如何保证得到的是可行解？它是最优解吗？"><a href="#如何保证得到的是可行解？它是最优解吗？" class="headerlink" title="如何保证得到的是可行解？它是最优解吗？"></a>如何保证得到的是可行解？它是最优解吗？</h4><p>至少有一个$\alpha_{i}\geq \frac{1}{k}$，保证相应的$\beta_{r}=1$</p>
-<p>因为$\sum\limits_{h\in Index(a_{j})}x_{h}\geq 1$保证至少被选中一次</p>
-<p>又$\beta_{i}\leq k·\alpha_{i}$</p>
-<p>所以$cost(\beta)\leq k·cost(\alpha)$</p>
-<p>即$cost(\beta)\leq k·Opt_{SCP(k)}(X,F)$</p>
-<h3 id="MAX-SAT问题"><a href="#MAX-SAT问题" class="headerlink" title="MAX-SAT问题"></a>MAX-SAT问题</h3><p>$z_{c}、y_{i}放宽到[0,1]区间$</p>
-<p>得到$y_{i}$的赋值，对$y_{i}$进行rounding操作，进而得到$z_{c}$的值</p>
-<p>已经保证是可行解了</p>
-<p>理解$y_{i}$被round到1的概率</p>
-<h3 id="对偶方法"><a href="#对偶方法" class="headerlink" title="对偶方法"></a>对偶方法</h3><p>涉及到两个问题</p>
-<ul>
-<li>输入相同</li>
-<li>优化目标相反</li>
-<li>最优解的值是同时到达的</li>
-</ul>
-<h4 id="LP-Duality"><a href="#LP-Duality" class="headerlink" title="LP-Duality"></a>LP-Duality</h4><p>寻找适当的对偶问题$Dual(U)$，计算对偶问题的最优解</p>
-<p>任何一个线性规划问题都可以找到一个对偶问题且是线性规划问题</p>
-<p>当原问题是最小值优化问题时，$Dual(U)$需要满足以下条件：</p>
-<ol>
-<li>$Dual(U)$是最大值优化问题，并且可以和原问题的实例一一对应</li>
-<li>U的任何实例对应可行解的$cost$一定不小于对偶问题的任何一个可行解的$cost$</li>
-<li>对于U的实例I，有$Opt_{U}(I)=Opt_{Dual(U)}(Dual(I))$</li>
-</ol>
-<h4 id="书上给出的Dual（I）方法"><a href="#书上给出的Dual（I）方法" class="headerlink" title="书上给出的Dual（I）方法"></a>书上给出的Dual（I）方法</h4><p>原问题的表述如下：</p>
-<p>$minimize\ \sum\limits_{i=1}^{n}c_{i}x_{i}$</p>
-<p>$constraints:$</p>
-<p>$\sum\limits_{i=1}^{n}a_{ji}y_{j}\leq b_{j}\ for\ j=1,\dots,m$</p>
-<p>$x_{i}\geq 0\ for\ i=1,\dots,n$</p>
-<p>$Dual(I)$的形式如下：</p>
-<p>$miaximize\ \sum\limits_{j=1}^{m}b_{j}y_{j}$</p>
-<p>$constraints:$</p>
-<p>$\sum\limits_{j=1}^{m}a_{ji}y_{j}\leq c_{j}\ for\ i=1,\dots,n$</p>
-<p>$y_{j}\geq 0\ for\ j=1,\dots,m$</p>
-<p>可以看出是将b和c的位置进行了互换</p>
-<h4 id="弱LP-Duality定理"><a href="#弱LP-Duality定理" class="headerlink" title="弱LP-Duality定理"></a>弱LP-Duality定理</h4><p>原问题的可行解$\alpha=(\alpha_{1},\dots,\alpha_{n})\in M(I),\beta=(\beta_{1},\dots,\beta_{n})\in M(Dual(I))$</p>
-<p>有$cost(\alpha)=\sum\limits_{i=1}^{n}c_{i}\alpha_{i}\geq \sum\limits_{j=1}^{m}b_{j}\beta_{j}=cost(\beta),$</p>
-<p>$i.e.,Opt_{LP}(I)\geq Opt_{LP}(Dual(I))$</p>
-<h5 id="推论（取等条件）"><a href="#推论（取等条件）" class="headerlink" title="推论（取等条件）"></a>推论（取等条件）</h5><p>如果$cost(\alpha)=cost(\beta)$，则$\alpha,\beta$同时为问题的最优解</p>
-<p>$Proof\ of\ theorem：$</p>
-<p>由约束条件有$\sum\limits_{j=1}^{m}a_{ji}\beta_{j}\leq c_{j}\ for\ i=1,\dots,n.$</p>
-<p>故</p>
-<p>$cost(\alpha)=\sum\limits_{i=1}^{n}c_{i}\alpha_{i}\geq \sum\limits_{i=1}^{n}(\sum\limits_{j=1}^{m}a_{ji}\beta_{j})\alpha_{i}$</p>
-<p>同理可得</p>
-<p>$cost(\beta)=\sum\limits_{j=1}^{m}b_{j}\beta_{j}\leq \sum\limits_{j=1}^{m}(\sum\limits_{i=1}^{n}a_{ji}\alpha_{i})\beta_{j}$</p>
-<p>显然，两个不等式的右边是相等的</p>
-<p>所以有</p>
-<p>$cost(\alpha)\leq cost(\beta).$</p>
-<h4 id="LP-Duality解决难题的思想"><a href="#LP-Duality解决难题的思想" class="headerlink" title="LP-Duality解决难题的思想"></a>LP-Duality解决难题的思想</h4><p>将难问题规约到IP问题G</p>
-<p>松弛到LP问题，使用对偶方法得到$Dual(I_{rel}(G))$</p>
-<p>分别计算$I(G)$的可行解和$ Dual(I_{rel}(G))$的最优解</p>
-<h4 id="如何求-I-G-的可行解并使之有较高的质量？"><a href="#如何求-I-G-的可行解并使之有较高的质量？" class="headerlink" title="如何求$I(G)$的可行解并使之有较高的质量？"></a>如何求$I(G)$的可行解并使之有较高的质量？</h4><p>通过可行解$\beta \in M(Dual(I_{rel}(G)))$来确定相关联的可行解$\alpha_{\beta}\in M(I(G))=M(G).$</p>
-<h4 id="书上给出的合理关联"><a href="#书上给出的合理关联" class="headerlink" title="书上给出的合理关联"></a>书上给出的合理关联</h4><h5 id="Complementary-slackness-conditions"><a href="#Complementary-slackness-conditions" class="headerlink" title="Complementary slackness conditions"></a><strong>Complementary slackness conditions</strong></h5><p>当满足以下条件时：</p>
-<ul>
-<li>Primal complementary slackness conditions<ul>
-<li>$\alpha_{i}=0\ or\ \sum\limits_{j=1}^{m}a_{ji}\beta_{j}=c_{i}\ for\ each\ i\in{1,2,\dots,n}$</li>
-</ul>
-</li>
-<li>Dual complementary slackness conditions<ul>
-<li>$\beta_{j}=0\ or\ \sum\limits_{i=1}^{n}a_{ji}\alpha_{i}=b_{j}\ for\ each\ j\in{1,2,\dots,m}$</li>
-</ul>
-</li>
-</ul>
-<p>$\alpha,\beta$同时是原LP问题和对偶问题的最优解</p>
-<p>$proof:$</p>
-<p>$\Leftarrow:$</p>
-<p>若$\alpha,\beta$均为最优解，则有$cost(\alpha)=\sum\limits_{j=1}^{n}c_{i}\alpha_{i}=\sum\limits_{j=1}^{m}b_{j}\beta_{j}=cost(\beta)$</p>
-<p>根据弱LP-Duality定理，有：$cost(\alpha)=\sum\limits_{i=1}^{n}c_{i}\alpha_{i}=\sum\limits_{i=1}^{m}(\sum\limits_{j=1}^{m}a_{ji}\beta_{j})\alpha_{i}$</p>
-<p>或者当$\sum\limits_{j=1}^{m}a_{ji}\beta_{j}&lt;c_{i}$时，$\alpha_{i}=0$，</p>
-<p>另一个条件同理</p>
-<p>$\Leftarrow:$</p>
-<p>若$\sum\limits_{j=1}^{m}a_{ji}\beta_{j}=c_{i}$，则有$cost(\alpha)=\sum\limits_{i=1}^{n}c_{i}\alpha_{i}=\sum\limits_{i=1}^{m}(\sum\limits_{j=1}^{m}a_{ji}\beta_{j})\alpha_{i}$</p>
-<p>所以$cost(\alpha)=cost(\beta)$</p>
-<p>由弱LP-Duality定理可知，$\alpha,\beta$同时为最优解。</p>
-<h1 id="对实际问题的建模（小班内容）"><a href="#对实际问题的建模（小班内容）" class="headerlink" title="对实际问题的建模（小班内容）"></a>对实际问题的建模（小班内容）</h1><h2 id="0-1-KP"><a href="#0-1-KP" class="headerlink" title="0-1 KP"></a>0-1 KP</h2><p>目标：</p>
-<p>$maximize\ \sum\limits_{i=1}^{n}c_{i}x_{i}$</p>
-<p>constraints:</p>
-<p>$\sum\limits_{i=1}^{n}\omega_{i}x_{i}\leq b$</p>
-<p>$x_{i}\in {0,1}for\ i=1,\dots,n$.</p>
-<h2 id="multiple-KP"><a href="#multiple-KP" class="headerlink" title="multiple KP"></a>multiple KP</h2><p>目标：</p>
-<p>$maximize\ \sum\limits_{i=1}^{m}\sum\limits_{j=1}^{n}c_{j}x_{ij}$</p>
-<p>constraints:</p>
-<p>$\sum\limits_{j=1}^{n}\omega_{j}x_{ij}\leq W_{i},for\ all\ 1\leq i\leq m$</p>
-<p>$\sum\limits_{i=1}^{m}x_{ij}\leq 1,for\ all\ 1\leq j\leq m$</p>
-<p>$x_{ij}\in{0,1}\ for all\ 1\leq j\leq n\ and\ all\ 1\leq i\leq m$</p>
-<h2 id="0-1-multidimensional-KP"><a href="#0-1-multidimensional-KP" class="headerlink" title="0-1 multidimensional KP"></a>0-1 multidimensional KP</h2><p>同时有体积和重量的限制</p>
-<p>目标：</p>
-<p>$maximize\ \sum\limits_{j=1}^{n}c_{j}x_{j}$</p>
-<p>constraints:</p>
-<p>第i个背包的重量限制：</p>
-<p>$\sum\limits_{j=1}^{n}\omega_{j}x_{j}\leq W_{i},for\ all\ 1\leq i \leq m$</p>
-<p>第i个背包的体积限制：</p>
-<p>$\sum\limits_{j=1}^{n}v_{j}x_{j}\leq V_{i},for\ all\ 1\leq i \leq m$</p>
-<p>$x_{j}\in{0,1}$</p>
-<h2 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h2><p>目标函数：</p>
-<p>$minimize\ \sum\limits_{i=1}^{m}x_{i}$</p>
-<p>约束条件：</p>
-<p>$\sum\limits_{j\in Index(k)}x_{j}\geq 1\ for\ k=1,\dots,n.$</p>
-<p>$Index(k)={d\in{1,\dots,m}|a_{k}\in S_{d}}$</p>
-<p>$a_{k}$所在的集合的下标的集合，约束条件即为每个$x_{j}$被选到至少一次，即为覆盖了整个$X$集合</p>
-<h2 id="MS"><a href="#MS" class="headerlink" title="MS"></a>MS</h2><p>输入：$p_{1},p_{2},\dots,p_{n}$时间分配到m台相同的机器上</p>
-<p>目标：使得完成所有任务的用时最短</p>
-<p>线性规划形式：</p>
-<p>$x_{ij}\in {0,1}\ for\ i=1,\dots,n,j=1,\dots,m第i个任务分配到第j台机器上$</p>
-<p>$\sum\limits_{j=1}^{m}x_{ij}=1\ for\ all\ i\in{1,\dots,n}保证每个任务都在一台机器上执行过一次$</p>
-<p>$minimize\ t$</p>
-<p>$t-\sum\limits_{i=1}^{n}p_{i}·x_{ij}\geq 0\ for\ all\ j\in{1,\dots,m}$</p>
-<h2 id="MAX-SAT最大可满足问题"><a href="#MAX-SAT最大可满足问题" class="headerlink" title="MAX-SAT最大可满足问题"></a>MAX-SAT最大可满足问题</h2><p>问题表述：<br>$F=F_{1}\and F_{2}\and \dots\and F_{m}$</p>
-<p>$z_{i}=1\ iff\ F_{i}满足$</p>
-<p>$In^{+}(F_{i})是在F_{i}中以正形式出现的布尔变量x_{i}的下标集合$</p>
-<p>$In^{-}(F_{i})是在F_{i}中以负形式出现的布尔变量x_{i}的下标集合$</p>
-<p>目标：</p>
-<p>$maximize\ \sum\limits_{j=1}^{m}z_{j}$</p>
-<p>constraints:</p>
-<p>$z_{j}-\sum\limits_{i\in In^{+}(F_{j})}x_{i}-\sum\limits_{l\in In^{-}(F_{j})}(1-x_{l})\leq 0,for\ j=1,\dots,m$</p>
-<p>$x_{i}\in {0,1}for\ i=1,\dots,n$</p>
-<p>$z_{j}\in {0,1}for\ j=1,\dots,m$</p>
-<p>其中，第一个不等式表示的含义为：$z_{j}$只有在至少一个$x_{i}$取1的情况下才有可能取1</p>
-<h2 id="WEIGHT-VCP"><a href="#WEIGHT-VCP" class="headerlink" title="WEIGHT_VCP"></a>WEIGHT_VCP</h2><p>目标：</p>
-<p>$minimize\ \sum\limits_{i=1}^{n}c(v_{i})x_{i}$</p>
-<p>constraints:</p>
-<p>$x_{i}+x_{j}\geq 1for\ every\ {v_{i},v_{j}\in E}$</p>
-<h2 id="maximum-matching"><a href="#maximum-matching" class="headerlink" title="maximum matching"></a>maximum matching</h2><p>最大的边的集合的规模，使得集合内的边没有公共顶点</p>
-<p>目标：</p>
-<p>$maximize\ \sum\limits_{e\in E}x_{e}$</p>
-<p>constraints:</p>
-<p>$\sum\limits_{e\in E(v)}x_{e}\leq 1\ for\ every\ v\in V$</p>
-<p>$x_{e}\in {0,1}$</p>
-<h2 id="WEIGHT-CL带权的最大团（完全连通图）"><a href="#WEIGHT-CL带权的最大团（完全连通图）" class="headerlink" title="WEIGHT-CL带权的最大团（完全连通图）"></a>WEIGHT-CL带权的最大团（完全连通图）</h2><p>$maximize\ \sum\limits_{i=1}^{n}\omega_{i}x_{i}$</p>
-<p>$x_{i}+x_{j}\leq 1,\forall(i,j)\in\bar E$</p>
-<p>$x_{i}\in{0,1},i=1,\dots,n$</p>
-<h2 id="facility-location-problem"><a href="#facility-location-problem" class="headerlink" title="facility location problem"></a>facility location problem</h2><p>The facility location problem consists of a set of potential facility F that can be opened, and a set of cities C that must be serviced. The goal is to pick a subset of facilities to open, to minimize the sum of distances from each city to its nearest facility, plus the sum of opening costs of the facilities.  </p>
-<p>第i个设备，第j个城市，</p>
-<p>$y_{i}表示是否开启第i个设备$</p>
-<p>$c_{ij}表示第i个设备是否供应给了第j个城市$</p>
-<p>$minimize\ \sum\limits_{i\in F,j\in C}c_{ij}x_{ij}+\sum\limits_{i\in F}f_{i}y_{i}$</p>
-<p>$\sum\limits_{i\in F}x_{ij}=1,j\in C$</p>
-<p>$x_{ij}只有在y_{i}取1的条件下才有可能取1$</p>
-<p>$y_{i}\geq x_{ij},i\in F,j\in C$</p>
-<p>$x_{ij}\in {0,1},i\in F,j\in C$</p>
-<p>$y_{i}\in{0,1},i\in F$</p>
-<h2 id="TSP旅行商问题"><a href="#TSP旅行商问题" class="headerlink" title="TSP旅行商问题"></a>TSP旅行商问题</h2><p>$minimize\ \sum\limits_{j=2}^{n}\sum\limits_{i=1}^{j-1}c_{ij}x_{ij}$</p>
-<p>$x_{ij}\in {0,1}$</p>
-<p>constraints:每个点只经过一次，即只有两条和它相邻的边被选中</p>
-<p>$\sum\limits_{i=1}^{n}x_{ij}=2$</p>
-<p>还要保证它构成回路，同时没有子路径</p>
-<p>$\sum\limits_{i\in S,j\in V-S}x_{ij}+x_{ji}\geq 2$</p>
-<p>对于任意的分割，它们之间至少有两条边相连，保证了所有子集的连通性</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="SUN Shiyu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="codewithssy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/21/%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" class="post-title-link" itemprop="url">个人网站搭建过程记录</a>
+            <a href="/2022/04/27/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/Bin-packing/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -837,7 +271,690 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-21 14:03:36 / 修改时间：22:15:51" itemprop="dateCreated datePublished" datetime="2022-03-21T14:03:36+08:00">2022-03-21</time>
+              <time title="创建时间：2022-04-27 15:21:31 / 修改时间：15:29:49" itemprop="dateCreated datePublished" datetime="2022-04-27T15:21:31+08:00">2022-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Bin-packing"><a href="#Bin-packing" class="headerlink" title="Bin-packing"></a>Bin-packing</h1><p>最终目标求解MS</p>
+<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>p309</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/10/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-25 12:48:41 / 修改时间：16:05:05" itemprop="dateCreated datePublished" datetime="2022-04-25T12:48:41+08:00">2022-04-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="10-状态机模型的应用"><a href="#10-状态机模型的应用" class="headerlink" title="10.状态机模型的应用"></a>10.状态机模型的应用</h1><h2 id="理解物理世界"><a href="#理解物理世界" class="headerlink" title="理解物理世界"></a>理解物理世界</h2><p>deterministic：确定的状态机  经典力学</p>
+<p>non-deterministic：量子力学</p>
+<p>Game of Life</p>
+<p>二维网格 粒子和周围局部状态相关 随着时间演进</p>
+<p>预测未来  时间旅行  </p>
+<h2 id="编译器和现代CPU"><a href="#编译器和现代CPU" class="headerlink" title="编译器和现代CPU"></a>编译器和现代CPU</h2><p>编译正确：保持可观测行为的一致性：syscall、volatile variable loads、termination</p>
+<p>因此编译器可以优化</p>
+<h2 id="查看状态机执行"><a href="#查看状态机执行" class="headerlink" title="查看状态机执行"></a>查看状态机执行</h2><h3 id="Trace和调试器"><a href="#Trace和调试器" class="headerlink" title="Trace和调试器"></a>Trace和调试器</h3><ul>
+<li>strace/gdb</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strace ./a.out</span><br><span class="line">strace -T ./a/out   //输出系统调用花费的时间</span><br></pre></td></tr></table></figure>
+
+<p>状态的一部分</p>
+<h4 id="time-travel-debugging"><a href="#time-travel-debugging" class="headerlink" title="time-travel debugging"></a>time-travel debugging</h4><p>记录steps</p>
+<p>记录初始状态和每条指令前后状态的diff</p>
+<ul>
+<li>gdb隐藏功能</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">record full//打开记录模式</span><br><span class="line">record stop//关闭记录模式</span><br><span class="line">rsi //回溯</span><br><span class="line">reverse-step/reverse-stepi</span><br></pre></td></tr></table></figure>
+
+<p>复杂的指令sys call无法保证</p>
+<p>仅限于寄存器！！</p>
+<h4 id="record-amp-replay"><a href="#record-amp-replay" class="headerlink" title="record&amp;replay"></a>record&amp;replay</h4><p>完整记录一次执行</p>
+<p>程序执行时记录，结束后复现程序行为</p>
+<p>rdrand、syscall</p>
+<ul>
+<li>对于确定的指令，只要记录指令数</li>
+<li>非确定指令需要记录结果</li>
+</ul>
+<h2 id="采样状态机执行：profiler"><a href="#采样状态机执行：profiler" class="headerlink" title="采样状态机执行：profiler"></a>采样状态机执行：profiler</h2><p>为了性能优化，需要得到执行的summary：性能摘要</p>
+<p>每隔一段时间“中断”观察状态机的执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perf stat ./a.out</span><br><span class="line">perf record ./a.out</span><br><span class="line">perf report</span><br></pre></td></tr></table></figure>
+
+<p>提示程序中值得优化的部分</p>
+<p>profiler可以优化L1(pmm)</p>
+<h2 id="程序验证"><a href="#程序验证" class="headerlink" title="程序验证"></a>程序验证</h2><p>model-checker</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/git%E7%AE%A1%E7%90%86%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/24/git%E7%AE%A1%E7%90%86%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-24 16:37:10" itemprop="dateCreated datePublished" datetime="2022-04-24T16:37:10+08:00">2022-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/M1%EF%BC%9Apstree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/24/M1%EF%BC%9Apstree/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-24 16:12:49 / 修改时间：23:38:48" itemprop="dateCreated datePublished" datetime="2022-04-24T16:12:49+08:00">2022-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="M1：打印进程树（pstree）"><a href="#M1：打印进程树（pstree）" class="headerlink" title="M1：打印进程树（pstree）"></a>M1：打印进程树（pstree）</h1><h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; argc; i++) &#123;</span><br><span class="line">    assert(argv[i]);  <span class="comment">//C标准保证</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;argv[%d] = %s\n&quot;</span>, i, argv[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  assert(!argv[argc]);<span class="comment">//C标准保证</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="make-运行结果"><a href="#make-运行结果" class="headerlink" title="make 运行结果"></a>make 运行结果</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./pstree-64 -n</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">argv[0] = ./pstree-64</span><br><span class="line">argv[1] = -n</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取进程编号"><a href="#获取进程编号" class="headerlink" title="获取进程编号"></a>获取进程编号</h2><h3 id="procfs"><a href="#procfs" class="headerlink" title="procfs"></a>procfs</h3><p>proc filesystem</p>
+<h5 id="proc目录"><a href="#proc目录" class="headerlink" title="/proc目录"></a>/proc目录</h5><h4 id="进程id"><a href="#进程id" class="headerlink" title="进程id"></a>进程id</h4><p>数据类型pid_t</p>
+<p>函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pid_t getpid//当前进程的id</span><br><span class="line">pid_t getppid//母进程的id</span><br><span class="line">pid_t gettid//线程的id</span><br></pre></td></tr></table></figure>
+
+<p>Your program should include the header files </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unistd.h </span><br><span class="line">sys/types.h</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取-proc中的所有文件夹名"><a href="#获取-proc中的所有文件夹名" class="headerlink" title="获取/proc中的所有文件夹名"></a>获取/proc中的所有文件夹名</h3><p>读文件夹需要结构体dirent</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dirent.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dirent</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __USE_FILE_OFFSET64</span></span><br><span class="line">    <span class="type">__ino_t</span> d_ino;</span><br><span class="line">    <span class="type">__off_t</span> d_off;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="type">__ino64_t</span> d_ino;</span><br><span class="line">    <span class="type">__off64_t</span> d_off;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span> d_reclen;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> d_type;</span><br><span class="line">    <span class="type">char</span> d_name[<span class="number">256</span>];		<span class="comment">/* We must not include limits.h! */</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>仓库结构体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIR *dir</span><br></pre></td></tr></table></figure>
+
+<p>函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> DIR *<span class="title function_">opendir</span> <span class="params">(<span class="type">const</span> <span class="type">char</span> *__name)</span> __<span class="title function_">nonnull</span> <span class="params">((<span class="number">1</span>))</span>;</span><br><span class="line"><span class="comment">//返回DIR仓库结构体,open的对象是char</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">struct</span> dirent *<span class="title function_">readdir</span> <span class="params">(DIR *__dirp)</span> __<span class="title function_">nonnull</span> <span class="params">((<span class="number">1</span>))</span>;</span><br><span class="line"><span class="comment">//返回dirent结构体，read的对象是DIR</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> <span class="title function_">closedir</span> <span class="params">(DIR *__dirp)</span> __<span class="title function_">nonnull</span> <span class="params">((<span class="number">1</span>))</span>;</span><br><span class="line"><span class="comment">//Return 0 if successful, -1 if not.</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isdigit</span><span class="params">(<span class="type">int</span> c)</span>;<span class="comment">//判断是否是十进制</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>FILE结构体和函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FILE *<span class="title function_">fopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename, <span class="type">const</span> <span class="type">char</span> *mode)</span>;</span><br><span class="line">    FILE *fp=fopen(filename,mode);</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li><strong>filename</strong> – 这是 C 字符串，包含了要打开的文件名称。</li>
+<li><strong>mode</strong> – 这是 C 字符串，包含了文件访问模式，模式如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">“r”</td>
+<td align="left">打开一个用于读取的文件。该文件必须存在。</td>
+</tr>
+<tr>
+<td align="left">“w”</td>
+<td align="left">创建一个用于写入的空文件。如果文件名称与已存在的文件相同，则会删除已有文件的内容，文件被视为一个新的空文件。</td>
+</tr>
+<tr>
+<td align="left">“a”</td>
+<td align="left">追加到一个文件。写操作向文件末尾追加数据。如果文件不存在，则创建文件。</td>
+</tr>
+<tr>
+<td align="left">“r+”</td>
+<td align="left">打开一个用于更新的文件，可读取也可写入。该文件必须存在。</td>
+</tr>
+<tr>
+<td align="left">“w+”</td>
+<td align="left">创建一个用于读写的空文件。</td>
+</tr>
+<tr>
+<td align="left">“a+”</td>
+<td align="left">打开一个用于读取和追加的文件。</td>
+</tr>
+</tbody></table>
+<h4 id="如何得到父进程"><a href="#如何得到父进程" class="headerlink" title="如何得到父进程"></a>如何得到父进程</h4><p>man 5 proc</p>
+<p>status中的PPID是父进程的ID</p>
+<p>需要从status文件中读取name、pid和ppid三个参数</p>
+<h5 id="fscanf"><a href="#fscanf" class="headerlink" title="fscanf()"></a>fscanf()</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="建树和打印"><a href="#建树和打印" class="headerlink" title="建树和打印"></a>建树和打印</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-19 08:27:02" itemprop="dateCreated datePublished" datetime="2022-04-19T08:27:02+08:00">2022-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-21 00:16:29" itemprop="dateModified" datetime="2022-04-21T00:16:29+08:00">2022-04-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="旅行推销商问题TSP"><a href="#旅行推销商问题TSP" class="headerlink" title="旅行推销商问题TSP"></a>旅行推销商问题TSP</h1><p>优化问题</p>
+<p>输入：带权的完全图</p>
+<p>输出：哈密尔顿回路</p>
+<p>目标：minimize总权值</p>
+<p>属于NPO(V)问题</p>
+<h2 id="满足三角不等式的TSP子问题"><a href="#满足三角不等式的TSP子问题" class="headerlink" title="满足三角不等式的TSP子问题"></a>满足三角不等式的TSP子问题</h2><p>任意三个顶点之间的权值满足三角不等式</p>
+<h3 id="这个条件的意义在哪里？"><a href="#这个条件的意义在哪里？" class="headerlink" title="这个条件的意义在哪里？"></a>这个条件的意义在哪里？</h3><p>任意一条边的权小于连接其端点的任意一条简单通路的权，因为是完全图所以容易证明</p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>最小代价保持连通图中的点仍然互连</p>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>在树的基础上构造哈密尔顿回路</p>
+<p>哈密尔顿回路要求每个点只经过一次：按照访问的顺序</p>
+<p>结果并不唯一</p>
+<h3 id="Algorithm-4-3-5-1-L-Delta"><a href="#Algorithm-4-3-5-1-L-Delta" class="headerlink" title="Algorithm 4.3.5.1 $L_{\Delta}$"></a>Algorithm 4.3.5.1 $L_{\Delta}$</h3><p>step1：构造最小生成树</p>
+<p>step2：选择任意一点，执行DFS，利用DFS trail每条边走两遍，生成哈密尔顿回路</p>
+<p>一定是可行解，但不一定是最优解</p>
+<p>多项式时间算法</p>
+<h4 id="2-近似算法"><a href="#2-近似算法" class="headerlink" title="2-近似算法"></a>2-近似算法</h4><p>证明：</p>
+<p>$cost(T)= \sum_{e\in E(T)}c(e)\leq cost(H_{Opt})$</p>
+<p>因为将最优解删去一条边就能得到一个生成树，这个树的权值和一定不小于最小生成树</p>
+<p>$cost(\bar H)\leq cost(W)\leq 2·cost(H_{Opt})$</p>
+<p>得到近似比为2</p>
+<p>证明细节：</p>
+<p>因为W是DFS的路径，最小生成树的每条边来回走了两次所以有</p>
+<p>$cost(W)=2·cost(T)\leq 2·cost(H_{Opt})$</p>
+<p>又因为生成哈密尔顿回路是将W的路径替换成边，由三角不等式可以得到：</p>
+<p>$cost(\bar H)\leq cost(W)$</p>
+<h4 id="Worst-Case"><a href="#Worst-Case" class="headerlink" title="Worst Case"></a>Worst Case</h4><p>p287</p>
+<h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><p>消除奇次顶点，一定成对出现，配对加边生成超图，可能有重边$\rightarrow$一定有欧拉回路</p>
+<h3 id="Algorithm-4-3-5-4"><a href="#Algorithm-4-3-5-4" class="headerlink" title="Algorithm 4.3.5.4"></a>Algorithm 4.3.5.4</h3><p>step1：最小生成树</p>
+<p>step2：遍历生成度数为奇数的点的集合S</p>
+<p>step3：在集合S上构造权重最小的完美匹配M（没有公共点的边集）</p>
+<p>step4：在树的基础上添加匹配里的边，可能会有重边，构造欧拉回路</p>
+<p>step5：缩短欧拉回路（删除已经出现过的点），构造哈密尔顿回路H</p>
+<h4 id="1-5-近似算法"><a href="#1-5-近似算法" class="headerlink" title="1.5-近似算法"></a>1.5-近似算法</h4><p>证明：</p>
+<h4 id="最坏情况的例子"><a href="#最坏情况的例子" class="headerlink" title="最坏情况的例子"></a>最坏情况的例子</h4><p>教材page 294</p>
+<h3 id="Algorithm-4-3-5-18-SEKANINA‘S-ALGORITHM"><a href="#Algorithm-4-3-5-18-SEKANINA‘S-ALGORITHM" class="headerlink" title="Algorithm 4.3.5.18. SEKANINA‘S ALGORITHM"></a>Algorithm 4.3.5.18. SEKANINA‘S ALGORITHM</h3><p>step1：最小生成树</p>
+<p>step2：构建$T^3$</p>
+<p>step3：找一条哈密尔顿回路使得包含树T的每一条边两次</p>
+<h4 id="Lemma-4-3-5-17"><a href="#Lemma-4-3-5-17" class="headerlink" title="Lemma 4.3.5.17."></a>Lemma 4.3.5.17.</h4><ul>
+<li>$T^3$中一定有哈密尔顿回路</li>
+<li>$P_T(H)$中，$E(T)$的每条边（最多？）出现两次</li>
+<li>数学归纳法证明</li>
+</ul>
+<h4 id="2-近似算法-1"><a href="#2-近似算法-1" class="headerlink" title="2-近似算法"></a>2-近似算法</h4><p>证明:</p>
+<h4 id="算法的意义"><a href="#算法的意义" class="headerlink" title="算法的意义"></a>算法的意义</h4><p>算法对于dist是稳定的，解决近似率恶化太快的问题</p>
+<h2 id="如何对TSP问题进行划分"><a href="#如何对TSP问题进行划分" class="headerlink" title="如何对TSP问题进行划分"></a>如何对TSP问题进行划分</h2><ul>
+<li>p问题<ul>
+<li>满足三角不等式的基础上再进行划分</li>
+</ul>
+</li>
+<li>dist<ul>
+<li>不满足三角不等式</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/11/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/11/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-11 15:10:48" itemprop="dateCreated datePublished" datetime="2022-04-11T15:10:48+08:00">2022-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-14 10:20:22" itemprop="dateModified" datetime="2022-04-14T10:20:22+08:00">2022-04-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h1><h2 id="SKP"><a href="#SKP" class="headerlink" title="SKP"></a>SKP</h2><p>KP问题的子问题，可行解是一致的</p>
+<p>输入：$\omega_1,\omega_2,\dots,\omega_n,b$</p>
+<p>优化目标：$\sum\omega_{i}$</p>
+<p>限制条件：$\sum\omega_{i}\leq b$</p>
+<p>goal：maximum</p>
+<p>simple在于价值就是重量</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>近似率2</li>
+<li>近似率任意小，PTAS</li>
+<li>$KP_{\delta}$问题：近似率为常量</li>
+<li>近似率任意小的PTAS</li>
+<li>动态规划伪多项式：KP：FPTAS</li>
+</ul>
+<h2 id="Algorithm-4-3-4-1-Greedy-SKP"><a href="#Algorithm-4-3-4-1-Greedy-SKP" class="headerlink" title="Algorithm 4.3.4.1 Greedy-SKP"></a>Algorithm 4.3.4.1 Greedy-SKP</h2><p>step 1：按物品的重量降序排列</p>
+<p>step 2：维护集合T和cost（T)</p>
+<p>step 3：按顺序放入物品，保持不超过背包的容量：贪心策略：自大到小能装多少装多少</p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li>O(nlgn）</li>
+</ul>
+<p>主要考虑排序耗费时间，其余两步分别是O(1)和O(n)时间的</p>
+<h3 id="近似比"><a href="#近似比" class="headerlink" title="近似比"></a>近似比</h3><ul>
+<li>2-approximation algorithm</li>
+</ul>
+<h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><p>设j+1是最小的不在集合中的下标，因为算法得到了可行解cost（T)</p>
+<p>则$cost(T)+\omega_{j+1}&gt;b\geq Opt_{SKP}(\omega_{1},\dots,\omega_n,b)$</p>
+<p>加上第j+1个物品后一定超出背包容量，而最优解的物品总重量一定是不超过背包容量的</p>
+<p>又因为物品按照重量降序排列，所以有：</p>
+<p>$\omega_{j+1}\leq \omega_{j}\leq \frac{\omega_1+\omega_2+\dots\omega_j}{j}\leq\frac{b}{j}$</p>
+<p>综合上面两个不等式，有：</p>
+<p>$cost(T)&gt;b-\omega_{j+1}\geq b-\frac{b}{j}\geq \frac{b}{2}$对于$j\geq2$成立</p>
+<p>当$j=1$时，说明取了重量最大的物品后就不能再取了，此时所取得物品重量一定超过了背包容量的一半，近似比仍不超过2</p>
+<h2 id="Algorithm-4-3-4-2-穷举-贪心"><a href="#Algorithm-4-3-4-2-穷举-贪心" class="headerlink" title="Algorithm 4.3.4.2 穷举+贪心"></a>Algorithm 4.3.4.2 穷举+贪心</h2><p>穷尽搜索+贪心</p>
+<p>输入：尽可能小的正数$\epsilon,0&lt;\epsilon&lt;1$</p>
+<p>step 1：降序排列</p>
+<p>step 2：$k:=\lceil \frac{1}{\epsilon}\rceil$</p>
+<p>step 3：穷尽搜索规模不大于k的可行解集合S，使用贪心策略扩充到$S^{*}$，按字典顺序、回溯算法生成</p>
+<p>step 4：输出$S^*$中cost最大的下标集合</p>
+<h3 id="Theorem-4-3-4-3-用于SKP的PTAS"><a href="#Theorem-4-3-4-3-用于SKP的PTAS" class="headerlink" title="Theorem 4.3.4.3 用于SKP的PTAS"></a>Theorem 4.3.4.3 用于SKP的PTAS</h3><p>算法4.3.4.2 是 PTAS for SKP</p>
+<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><ul>
+<li>PTAS：多项式时间近似框架<ul>
+<li>多项式算法</li>
+<li>近似比</li>
+</ul>
+</li>
+</ul>
+<h5 id="多项式算法"><a href="#多项式算法" class="headerlink" title="多项式算法"></a>多项式算法</h5><p>最大代价是穷举：$\sum_{0\leq i\leq k}C_{n}^i\leq\sum n^i=\frac{n^{k+1}-1}{n-1}=O(n^k)$</p>
+<p>再考虑对于每一种穷举的情况进行extend的操作：</p>
+<p>$Time(n)\leq [\sum_{0\leq i\leq k}C_{n}^{i}]·O(n)=O(n^{k+1})=O(n^{\lceil \frac{1}{\epsilon}\rceil+1})$</p>
+<p>由于$\epsilon$在指数上，所以只满足PTAS的条件</p>
+<h5 id="近似比-1"><a href="#近似比-1" class="headerlink" title="近似比"></a>近似比</h5><p>设M是最优解的下标集合：$M={i_1,i_2,\dots,i_p}$</p>
+<p>穷举规模不大于k的集合，只需要考虑p&gt;k的情况：</p>
+<p>穷举得到的集合为$P={i_1,i_2,\dots,i_k}$包含了M集合的前k项，并且假设扩充后得到的$P^*!=M$，即存在$i_q\in M-P^*$，其中$i_q&gt;i_k\geq k$，因为M集合的前k项已经被包括了，所以漏网之鱼$i_q$只能是比$i_k$大的下标，同时也一定比k来的大，因为下标是按字典顺序的</p>
+<p>于是有：$cost(P^*)+\omega_{i_q}&gt;b\geq cost(M)$</p>
+<p>又因为：$\omega_{i_q}\leq \frac{\omega_{i_1}+\omega_{i_2}+\dots+\omega_{i_k}+\omega_{i_q}}{k+1}\leq \frac{cost(M)}{k+1}$</p>
+<p>得到：$R(I,\epsilon)=\frac{cost(M)}{cost(S^*)}=\frac{cost(M)}{cost(P^*)}\leq \frac{cost(M)}{cost(M)-\omega_{i_q}}\leq \frac{cost(M)}{cost(M)-\frac{cost(M)}{k+1}}=\frac{1}{1-\frac{1}{k+1}}=\frac{k+1}{k}=1+\frac{1}{k}\leq 1+\epsilon$</p>
+<h3 id="定义-KP-delta-子问题"><a href="#定义-KP-delta-子问题" class="headerlink" title="定义$KP_{\delta}$子问题"></a>定义$KP_{\delta}$子问题</h3><p>目的是要从SKP扩展到KP</p>
+<h4 id="DIST"><a href="#DIST" class="headerlink" title="DIST"></a>DIST</h4><ul>
+<li>$max{max{\frac{c_i-\omega_i}{\omega_i}|c_i\geq \omega_i,i\in{1,\dots,n}},max{\frac{\omega_i-c_i}{c_i}|\omega_i\geq c_i,i\in{1,\dots,n}}}$</li>
+<li>价值和重量相差最悬殊的情况被选作距离的表征</li>
+</ul>
+<h4 id="KP-delta-子问题"><a href="#KP-delta-子问题" class="headerlink" title="$KP_{\delta}$子问题"></a>$KP_{\delta}$子问题</h4><p>$KP_{\delta}=(\sum_I,\sum_{O},Ball_{\delta,DIST}(L_I),M,cost,maximum)$</p>
+<p>子问题的输入需要满足：$\frac{1}{1+\delta}\leq \frac{c_i}{\omega_i}\leq 1+\delta$</p>
+<h4 id="ASKP-epsilon"><a href="#ASKP-epsilon" class="headerlink" title="$ASKP_{\epsilon}$"></a>$ASKP_{\epsilon}$</h4><p>由算法4.3.4.2.决定的$(1+\epsilon)-approximation\ $算法，用它来解决KP问题，对KP问题是consistent的</p>
+<h3 id="Lemma-4-3-4-4-相对误差"><a href="#Lemma-4-3-4-4-相对误差" class="headerlink" title="Lemma 4.3.4.4 相对误差"></a>Lemma 4.3.4.4 相对误差</h3><ul>
+<li>近似算法的相对误差有保障</li>
+</ul>
+<ul>
+<li>$\epsilon_{A}(n)\leq \epsilon + \delta(2+\delta)(1+\epsilon)$可以看作一个常量</li>
+</ul>
+<h4 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h4><p>关键步骤：</p>
+<ul>
+<li>$cost(U)=\sum_{i\in U}c_i\leq (1+\delta)\sum_{i\in U}\omega_i$</li>
+<li>$cost(T^*)=\sum_{j\in T^*}c_j\geq \frac{\sum_{j\in T^*}\omega_j}{1+\delta}$</li>
+</ul>
+<p>相对误差：$cost(U)-cost(T^*)$</p>
+<p>考虑两种情况：</p>
+<ol>
+<li>$\sum_{i\in U}\omega_i-\sum_{j\in T^*}\omega_j\leq 0$比较简单</li>
+<li>相反的情况，比较困难</li>
+</ol>
+<p>详细推导过程见教材</p>
+<h3 id="Lemma-4-3-4-5"><a href="#Lemma-4-3-4-5" class="headerlink" title="Lemma 4.3.4.5."></a>Lemma 4.3.4.5.</h3><p>利用上面的相对误差来推导近似率</p>
+<ul>
+<li>近似率$R(I,\epsilon)=\frac{cost(U)}{cost(T^*)}$</li>
+<li>$(1+\delta^2+\epsilon+\epsilon·\delta^2)$-approximation algorithnm</li>
+</ul>
+<h4 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h4><p>输入保证了$\frac{1}{1+\delta}\leq \frac{\omega_i}{c_i}\leq 1+\delta$</p>
+<p>又因为在SKP问题中证明了具有$1+\delta$的近似比，所以有$\frac{\sum_{i\in U}\omega_i}{\sum_{j\in T^*}\omega_j}\leq 1+\delta$</p>
+<p>所以有近似率：$R(I,\epsilon)=\frac{cost(U)}{cost(T^*)}\leq \frac{\sum_{i\in U}\omega_i·(1+\delta)}{\sum_{j\in T^*}\omega_j·\frac{1}{1+\delta}}\leq (1+\delta)^2·(1+\epsilon)=1+\delta^2+\epsilon+\epsilon·\delta^2$</p>
+<h3 id="Corollary-4-3-4-6"><a href="#Corollary-4-3-4-6" class="headerlink" title="Corollary 4.3.4.6."></a>Corollary 4.3.4.6.</h3><p>算法4.3.4.2对于DIST是稳定的，但不是superstable的，为什么？</p>
+<h4 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h4><ul>
+<li>由Lemma 4.3.4.4中的$\epsilon_A(n)$可知算法对于DIST是稳定的<ul>
+<li>因为$\delta_{r,\epsilon}$-approximation算法$\Rightarrow\ stable$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>但不是superstable的<ul>
+<li>superstable定义：$\delta_{r,\epsilon}\leq f(\epsilon)·g(r)$，其中$lim_{\epsilon\rightarrow0}f(\epsilon)=0$</li>
+<li>考虑以下输入：$\omega_1,\omega_2,\dots,\omega_n,u_1,u_2,\dots,u_m,b,c_1,c_2,\dots,c_{2m}$<ul>
+<li>$\omega_1=\omega_2=\dots=\omega_m=u_1+1=u_2+1=\dots=u_m+1$</li>
+<li>$b=\sum_{i=1}^{m}\omega_{i}$</li>
+<li>$c_1=c_2=\dots=c_m=(1-\delta)\omega_1$</li>
+<li>$c_{m+1}=c_{m+2}=\dots=c_{2m}=(1+\delta)u_1$</li>
+</ul>
+</li>
+<li>我不理解这个输入为什么能说明问题？</li>
+</ul>
+</li>
+<li>不是$KP_{\delta}$的PTAS<ul>
+<li>PTAS定义：输入规模的多项式时间+相对误差$\leq \epsilon$</li>
+<li>因为近似率中有$(1+\delta)^2$的项，不满足只和$\epsilon$相关</li>
+</ul>
+</li>
+</ul>
+<h2 id="Algorithm-4-3-4-7-PTAS-MOD-SKP"><a href="#Algorithm-4-3-4-7-PTAS-MOD-SKP" class="headerlink" title="Algorithm 4.3.4.7 PTAS MOD-SKP"></a>Algorithm 4.3.4.7 PTAS MOD-SKP</h2><p>考虑性价比$\frac{c_i}{\omega_i}$</p>
+<p>step 1：按照性价比从高到低排序</p>
+<p>step 2：$k:=\lceil \frac{1}{\epsilon}\rceil$</p>
+<p>step 3：贪心策略</p>
+<h3 id="Lemma-4-3-4-8"><a href="#Lemma-4-3-4-8" class="headerlink" title="Lemma 4.3.4.8"></a>Lemma 4.3.4.8</h3><ul>
+<li>$(1+\epsilon·(1+\delta)·(1+\epsilon))-approximation$算法—$KP_{\delta}$</li>
+<li>PTAS for $KP_{\delta}$</li>
+</ul>
+<h4 id="证明-4"><a href="#证明-4" class="headerlink" title="证明"></a>证明</h4><ul>
+<li>第一种情况不可能出现，因为$T^*$的物品的性价比更高，而价值不可能超过最优解，所以重量一定小于最优解的质量</li>
+<li>第二种情况：同Lemma 4.3.4.4证明</li>
+</ul>
+<h3 id="Theorem-4-3-4-10"><a href="#Theorem-4-3-4-10" class="headerlink" title="Theorem 4.3.4.10"></a>Theorem 4.3.4.10</h3><ul>
+<li><p>$MOD-SKP_{\epsilon}$对于DIST是superstable的</p>
+<ul>
+<li>根据定义可得</li>
+</ul>
+</li>
+<li><p>Algorithm 4.3.4.7 是 PTAS for KP</p>
+<ul>
+<li>输入规模的多项式时间</li>
+<li>近似率</li>
+</ul>
+</li>
+</ul>
+<p>在2近似的基础上进行了两次优化后的结果</p>
+<h2 id="Algorithm-4-3-4-11-FPTAS-for-KP：DPKP"><a href="#Algorithm-4-3-4-11-FPTAS-for-KP：DPKP" class="headerlink" title="Algorithm 4.3.4.11 FPTAS for KP：DPKP"></a>Algorithm 4.3.4.11 FPTAS for KP：DPKP</h2><p>FPTAS是可能找到的最优结果了</p>
+<p>但是并非是从前面改进来的</p>
+<p>动态规划思想</p>
+<p>step 1：$c_{max}$</p>
+<p>​            $t:=\lfloor log_2\frac{\epsilon·c_{max}}{(1+\epsilon)·n}\rfloor$</p>
+<p>step 2：$c_i^{‘}:=\lfloor c_i·2^{-t}\rfloor$</p>
+<p>step 3：新的输入：$\omega_1,\omega_2,\dots,\omega_n,b,c_1^{‘},\dots,c_n^{‘}$输入到DPKP中</p>
+<h3 id="Theorem-4-3-4-12"><a href="#Theorem-4-3-4-12" class="headerlink" title="Theorem 4.3.4.12"></a>Theorem 4.3.4.12</h3><p>FPTAS for KP</p>
+<ul>
+<li><p>时间复杂度</p>
+<ul>
+<li>step 1、2：O(n)</li>
+<li>step 3：$O(n·Opt_{KP}(I^{‘}))$</li>
+</ul>
+</li>
+<li><p>近似率</p>
+<ul>
+<li>$R(I)\leq 1+\epsilon$</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/08/" class="post-title-link" itemprop="url">08并发bug和应对</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-08 11:22:00 / 修改时间：11:23:52" itemprop="dateCreated datePublished" datetime="2022-04-08T11:22:00+08:00">2022-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -845,7 +962,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">实验记录</span></a>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
                 </span>
             </span>
 
@@ -860,58 +977,343 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>1.注册github </p>
-<h5 id="2-安装git"><a href="#2-安装git" class="headerlink" title="2.安装git"></a>2.安装git</h5><p>在之前的学习过程中早已注册和安装好，所以可以跳过</p>
-<h5 id="3-1绑定github"><a href="#3-1绑定github" class="headerlink" title="3.1绑定github"></a>3.1绑定github</h5><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103391101">个人博客第3篇——绑定GitHub并提交文件 - 知乎 (zhihu.com)</a></p>
-<p>在ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#109;</a>时候报错：</p>
-<p>ssh: connect to host github.com port 22: Connection timed out</p>
-<p>解决办法：</p>
-<p>进入C:\Users\sunsnju.ssh 创建config文件并填入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User git</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br><span class="line"></span><br><span class="line">Host gitlab.com</span><br><span class="line">Hostname altssh.gitlab.com</span><br><span class="line">User git</span><br><span class="line">Port 443</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+          <h1 id="08并发bug和应对"><a href="#08并发bug和应对" class="headerlink" title="08并发bug和应对"></a>08并发bug和应对</h1><h2 id="防御性编程"><a href="#防御性编程" class="headerlink" title="防御性编程"></a>防御性编程</h2><p>把程序需要满足的条件用assert表示出来</p>
+<p>if(i(cond)) assert (0);</p>
+<p>memory error </p>
+<p>CHECK_INT / CHECK_HEAP</p>
+<h2 id="并发BUG"><a href="#并发BUG" class="headerlink" title="并发BUG"></a>并发BUG</h2><h3 id="死锁Deadlock"><a href="#死锁Deadlock" class="headerlink" title="死锁Deadlock"></a>死锁Deadlock</h3><h4 id="AA-Deadlock"><a href="#AA-Deadlock" class="headerlink" title="AA-Deadlock"></a>AA-Deadlock</h4><p><a target="_blank" rel="noopener" href="http://jyywiki.cn/pages/OS/2022/demos/spinlock-xv6.c">http://jyywiki.cn/pages/OS/2022/demos/spinlock-xv6.c</a></p>
+<p>自旋锁的防御性编程</p>
+<h4 id="ABBA-Deadlock"><a href="#ABBA-Deadlock" class="headerlink" title="ABBA-Deadlock"></a>ABBA-Deadlock</h4><p>严格按照固定的顺序获得所有锁</p>
+<p><a target="_blank" rel="noopener" href="http://jyywiki.cn/pages/OS/2022/demos/lock-ordering.py">http://jyywiki.cn/pages/OS/2022/demos/lock-ordering.py</a></p>
+<h3 id="数据竞争-Data-Race"><a href="#数据竞争-Data-Race" class="headerlink" title="数据竞争 Data Race"></a>数据竞争 Data Race</h3><p>不同的线程同时访问同一段内存，且至少有一个是写</p>
+<p>用互斥锁保护好共享数据，消灭数据竞争</p>
+<ul>
+<li>case1：上了两把不同的锁</li>
+<li>case2：忘记上锁</li>
+</ul>
+<p>忘记上锁：原子性违反AV</p>
+<p>忘记条件变量同步：顺序违反OV</p>
+<h2 id="应对并发BUG的方法"><a href="#应对并发BUG的方法" class="headerlink" title="应对并发BUG的方法"></a>应对并发BUG的方法</h2><p>始终假设自己的代码是错误的</p>
+<h3 id="Lockdep"><a href="#Lockdep" class="headerlink" title="Lockdep"></a>Lockdep</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *site </span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> LOCK_INIT()<span class="comment">//文件行号作为标识</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">lock</span><span class="params">()</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">unlock</span><span class="params">()</span></span><br><span class="line">    <span class="comment">//打印上锁日志</span></span><br></pre></td></tr></table></figure>
 
-<p>之后，显示成功</p>
-<h5 id="3-2-上传文件"><a href="#3-2-上传文件" class="headerlink" title="3.2 上传文件"></a>3.2 上传文件</h5><p>在git pull origin master 操作企图同步远程仓库和本地仓库时，报错：</p>
-<p>fatal: ‘github.com/Cling-coding/test’ does not appear to be a git repository<br>fatal: Could not read from remote repository.</p>
-<p>Please make sure you have the correct access rights<br>and the repository exists.</p>
-<p>解决方法：重新设置一下ssh key即可</p>
-<p>然后从git remote add origin 重新关联即可</p>
-<h5 id="4-购买域名"><a href="#4-购买域名" class="headerlink" title="4. 购买域名"></a>4. 购买域名</h5><p>个人模板审核中</p>
-<p>审核通过</p>
-<h5 id="5-安装nodejs和Hexo"><a href="#5-安装nodejs和Hexo" class="headerlink" title="5. 安装nodejs和Hexo"></a>5. 安装nodejs和Hexo</h5><p>在测试npm install webpack -g 遇到报错：</p>
-<p>解决方法：C:\users\sunsnju 删除.npmrc文件</p>
-<p>npm webpack -v检查版本信息  </p>
-<p>输出版本号说明没有问题了</p>
-<p>安装hexo：</p>
-<p>显示</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">changed 59 packages, and audited 60 packages in 17s</span><br><span class="line"></span><br><span class="line">14 packages are looking for funding</span><br><span class="line">  run `npm fund` for details</span><br><span class="line"></span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>动态维护一个图，严格按照锁的全局顺序，当图里出现环意味着违反了lock-ordering</p>
+<h3 id="ThreadSanitizer"><a href="#ThreadSanitizer" class="headerlink" title="ThreadSanitizer"></a>ThreadSanitizer</h3><p>数据竞争检查</p>
+<p>事件happens-before关系图，如果没有路径，则存在数据竞争</p>
+<p>动态程序分析，解析记录检查问题</p>
+<h3 id="动态分析工具：Sanitizers"><a href="#动态分析工具：Sanitizers" class="headerlink" title="动态分析工具：Sanitizers"></a>动态分析工具：Sanitizers</h3><p>编译选项：-fsanitize=thread</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./a.out &gt; /dev/null</span><br><span class="line">//屏蔽输出</span><br></pre></td></tr></table></figure>
 
-<p>执行hexo init 报错：bash: hexo: command not found</p>
-<p>STFW结果：</p>
-<p>法一：</p>
-<p>环境变量设置 .bin路径，仍不行</p>
-<p>重启试一下也没有用</p>
-<p>法二：</p>
-<p>版本问题 </p>
-<p>npm install npm -g </p>
-<p>升级到8.5.5版本后 无效</p>
-<p>法三：</p>
-<p>清除npm缓存</p>
-<p>无效</p>
-<p>法四：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15176340/2723817">使用命令npm install -g hexo-cli 安装Hexo报错bash: hexo: command not found问题解决_qq6080acaec926e的技术博客_51CTO博客</a></p>
-<p>解决√</p>
-<h5 id="6-解析域名"><a href="#6-解析域名" class="headerlink" title="6. 解析域名"></a>6. 解析域名</h5><p>cmd.exe:</p>
-<p>ping -4 </p>
-<p>返回IPV4格式地址</p>
-<p>完成</p>
-<h5 id="7-主题优化"><a href="#7-主题优化" class="headerlink" title="7. 主题优化"></a>7. 主题优化</h5><h5 id="8-上传文章"><a href="#8-上传文章" class="headerlink" title="8. 上传文章"></a>8. 上传文章</h5><p>source的_posts文件夹里上传.md文件即可</p>
-<p>在文章开头front matter中设置标题等要素</p>
-<p>mathjax：true提供数学公式的渲染</p>
-<p>需要在next主题的配置文件中将math选项设置为true</p>
-<p>在根目录上执行powershell</p>
-<p>npx hexo clean</p>
-<p>npx hexo g</p>
-<p>npx hexo d</p>
+<h3 id="Buffer-Overrun检查"><a href="#Buffer-Overrun检查" class="headerlink" title="Buffer Overrun检查"></a>Buffer Overrun检查</h3><p>Canary金丝雀</p>
+<ul>
+<li>牺牲内存单元预警memory error的发生</li>
+</ul>
+<p>magic 0x55555555 缓冲区</p>
+<h3 id="低配版Lockdep"><a href="#低配版Lockdep" class="headerlink" title="低配版Lockdep"></a>低配版Lockdep</h3><ul>
+<li>统计spincount：检测死锁</li>
+</ul>
+<h3 id="低配版Sannitizer（L1）"><a href="#低配版Sannitizer（L1）" class="headerlink" title="低配版Sannitizer（L1）"></a>低配版Sannitizer（L1）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">panic_on</span><br><span class="line">//double-allocation double-free</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/06/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/06/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-06 19:41:01" itemprop="dateCreated datePublished" datetime="2022-04-06T19:41:01+08:00">2022-04-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-07 10:57:47" itemprop="dateModified" datetime="2022-04-07T10:57:47+08:00">2022-04-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="覆盖问题与最大割集问题"><a href="#覆盖问题与最大割集问题" class="headerlink" title="覆盖问题与最大割集问题"></a>覆盖问题与最大割集问题</h1><p>面向小班的学习</p>
+<h2 id="greedy-vs-local-search"><a href="#greedy-vs-local-search" class="headerlink" title="greedy vs. local search"></a>greedy vs. local search</h2><p>local search 从一个解变换到另一个解</p>
+<p>greedy 最后才构造出一个可行解</p>
+<h2 id="Algorithm-4-3-2-1-for-MIN-VCP"><a href="#Algorithm-4-3-2-1-for-MIN-VCP" class="headerlink" title="Algorithm 4.3.2.1 for MIN-VCP"></a>Algorithm 4.3.2.1 for MIN-VCP</h2><p>维护三个集合C,A,E’</p>
+<p>C：点的集合，代表了点覆盖</p>
+<p>A：边的集合，代表了最大匹配</p>
+<p>E’：没有被C覆盖的边的集合</p>
+<p>当E’中还有边没有被覆盖时，从中任意选一条边，将边的两个点加入C中，边加入A中，E’中所有和这条边相连的边都从E’中去除</p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>O(|E|)</p>
+<p>使用方便的数据结构就可以了，每条边只被处理一次</p>
+<p>每条边的两个端点维护布尔值代表是否被选择，其中有一个被选择则说明边被覆盖</p>
+<h3 id="近似比"><a href="#近似比" class="headerlink" title="近似比"></a>近似比</h3><p>易知$|C|=2·|A|$，鉴于A是图的一个匹配，所以至少要|A|个点才能覆盖这个匹配</p>
+<p>又$Opt_{MIN-VCP(G)}\geq |A|$，意为覆盖整张图至少要覆盖这个匹配</p>
+<p>所以$|C|= 2· |A|\leq 2·Opt_{MIN-VCP}(G)$.</p>
+<p>即近似比最大为2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line"></span><br><span class="line">1((1))</span><br><span class="line">2((2))</span><br><span class="line">3((3))</span><br><span class="line">4((4))</span><br><span class="line"></span><br><span class="line">1--&gt;2</span><br><span class="line">2--&gt;3</span><br><span class="line">3--&gt;4</span><br></pre></td></tr></table></figure>
+
+<h2 id="Algorithm-4-3-2-11-for-Set-Cover-Problem"><a href="#Algorithm-4-3-2-11-for-Set-Cover-Problem" class="headerlink" title="Algorithm 4.3.2.11 for Set Cover Problem"></a>Algorithm 4.3.2.11 for Set Cover Problem</h2><p>贪心策略</p>
+<p>维护集合C和U</p>
+<p>U：X中未被覆盖的元素的集合</p>
+<p>C：选择的集合</p>
+<p>当U中还有元素未被覆盖时，选择一个能覆盖U中元素最多的集合S加入C中，U也相应地减少</p>
+<h3 id="近似比-1"><a href="#近似比-1" class="headerlink" title="近似比"></a>近似比</h3><ul>
+<li>$Har(max{|S||S\in F})$</li>
+</ul>
+<p>首先定义$Weight_{C}(x)=\frac{1}{|S_{i}-(S_{1}\cup S_{2}\cup \dots\cup S_{i-1})|}\ if\ x\in S_{i}- \cup_{j=1}^{i-1}S_{j}$</p>
+<ul>
+<li>$ln(|X|)$</li>
+</ul>
+<p>首先$max{|S||S\in F}\leq |X|$,并且$Har(d)\leq lnd+1 $</p>
+<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li>$O(n^{\frac{3}{2}})$</li>
+</ul>
+<p>更新集合的step执行一次时间花费O(|X|·|F|)</p>
+<p>执行次数为$min{|X|,|F|}\leq (|X|·|F|)^{\frac{1}{2}}$</p>
+<p>用什么数据结构来实现？</p>
+<h2 id="Algorithm-4-3-3-1-for-Maximum-Cut-Problem"><a href="#Algorithm-4-3-3-1-for-Maximum-Cut-Problem" class="headerlink" title="Algorithm 4.3.3.1 for Maximum Cut Problem"></a>Algorithm 4.3.3.1 for Maximum Cut Problem</h2><p>维护集合S，cut就是(S,V-S)</p>
+<p>如果存在点从一边移到另一边可以增加cost，就把它移过去</p>
+<h3 id="近似比-2"><a href="#近似比-2" class="headerlink" title="近似比-2"></a>近似比-2</h3><p>至少包含一半以上的边，而最优解不会超过|E|，所以近似比最大为2</p>
+<h3 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li>$O(|E|·|V|)$</li>
+</ul>
+<p>step一次执行O(|V|)时间，最多执行|E|次</p>
+<p>用什么数据结构实现？</p>
+<h2 id="为什么Min-VCP不会比SCP更难"><a href="#为什么Min-VCP不会比SCP更难" class="headerlink" title="为什么Min-VCP不会比SCP更难"></a>为什么Min-VCP不会比SCP更难</h2><p>Min-VCP问题可以规约到SCP问题</p>
+<p>Min-VCP相当于SCP（2）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/01/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/01/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/11/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-01 23:06:28" itemprop="dateCreated datePublished" datetime="2022-04-01T23:06:28+08:00">2022-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-28 23:04:05" itemprop="dateModified" datetime="2022-04-28T23:04:05+08:00">2022-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="11操作系统上的进程"><a href="#11操作系统上的进程" class="headerlink" title="11操作系统上的进程"></a>11操作系统上的进程</h1><h2 id="操作系统启动后的行为"><a href="#操作系统启动后的行为" class="headerlink" title="操作系统启动后的行为"></a>操作系统启动后的行为</h2><ul>
+<li>CPU Reset-&gt;Firmware-&gt;Boot loader-&gt;kernel_start()-&gt;第一个程序 /bin/init-&gt;程序执行+系统调用</li>
+<li>加载第一个进程</li>
+</ul>
+<h2 id="最小的Linux"><a href="#最小的Linux" class="headerlink" title="最小的Linux"></a>最小的Linux</h2><h3 id="busybox"><a href="#busybox" class="headerlink" title="busybox"></a>busybox</h3><p>工具集</p>
+<h2 id="进程管理API"><a href="#进程管理API" class="headerlink" title="进程管理API"></a>进程管理API</h2><ul>
+<li><p>进程管理（*）</p>
+<ul>
+<li>创建进程create、spawn、fork</li>
+<li></li>
+</ul>
+</li>
+<li><p>内存管理</p>
+<ul>
+<li>mmap</li>
+</ul>
+</li>
+<li><p>文件管理</p>
+<ul>
+<li>open/close/read/write</li>
+<li>mkdir/link/unlink</li>
+</ul>
+</li>
+</ul>
+<h3 id="fork"><a href="#fork" class="headerlink" title="fork()"></a>fork()</h3><h4 id="创建进程的API"><a href="#创建进程的API" class="headerlink" title="创建进程的API"></a>创建进程的API</h4><p>进程分叉：做一份状态机完整的复制 (内存、寄存器现场)</p>
+<p>fork的返回值（创建进程的进程号）不同：子进程返回0</p>
+<h4 id="fork-bomb"><a href="#fork-bomb" class="headerlink" title="fork bomb"></a>fork bomb</h4><p>不断创建子进程</p>
+<h4 id="fork-demo-c"><a href="#fork-demo-c" class="headerlink" title="fork-demo.c"></a>fork-demo.c</h4><p>一个程序 pc=5</p>
+<p>fork()</p>
+<p>pid=1                                     pid=2  </p>
+<p>pc=6                                       pc=6</p>
+<p>p1=2（子进程的进程号）    p1=0（子进程返回0）</p>
+<p>变成并发程序</p>
+<p>…</p>
+<h4 id="fork-printf-c"><a href="#fork-printf-c" class="headerlink" title="fork-printf.c"></a>fork-printf.c</h4><p>状态机</p>
+<p>2+4个Hello</p>
+<p>实际运行：6个Hello</p>
+<p>| wc -l </p>
+<p>统计输出个数：8</p>
+<p>| cat</p>
+<p>输出了8个Hello</p>
+<h5 id="为什么？"><a href="#为什么？" class="headerlink" title="为什么？"></a>为什么？</h5><p>我们做了一个假设：进程执行到printf打印Hello，实则不然</p>
+<p>原因：fork复制了库函数的缓冲区内容</p>
+<p>flush(stdout)     </p>
+<p>stdout:</p>
+<ul>
+<li>line buffer<ul>
+<li>\n 缓冲区内容用系统调用写出来</li>
+</ul>
+</li>
+<li>full buffer <ul>
+<li>4096B 之后写缓冲区内容</li>
+</ul>
+</li>
+</ul>
+<p>直接到终端和管道的区别</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setbuf(<span class="built_in">stdout</span>,<span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+<p>取消缓冲，直接用系统调用</p>
+<h3 id="execve"><a href="#execve" class="headerlink" title="execve()"></a>execve()</h3><p>替换状态机</p>
+<p>将状态机重置为某个程序的初始状态</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">execve</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename, <span class="type">char</span> * <span class="type">const</span> argv, <span class="type">char</span> * <span class="type">const</span> envp)</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>envp<ul>
+<li>环境变量</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strace ./a.out</span><br><span class="line">execve(&quot;/bin/bash&quot;, [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;env&quot;], 0x7fffc831dfb0 /* 1 var */) = 0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>应用程序执行的环境</p>
+<ul>
+<li>env查看</li>
+<li>export设置</li>
+</ul>
+<h3 id="exit"><a href="#exit" class="headerlink" title="_exit()"></a>_exit()</h3><p>终止状态机</p>
+<p>exit 的几种写法 (它们是不同)</p>
+<ul>
+<li><p>```<br>exit(0)//stdlib.h中声明的 libc 函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 会调用 `atexit`</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  _exit(0)//glibc 的 syscall wrapper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行 exit_group系统调用终止整个进程 (所有线程)<ul>
+<li>细心的同学已经在 strace 中发现了</li>
+</ul>
+</li>
+<li>不会调用 <code>atexit</code></li>
+<li>更安全的行为</li>
+</ul>
+</li>
+<li><pre><code>syscall(SYS_exit, 0)
+</code></pre>
+<ul>
+<li>执行 “<code>exit</code>” 系统调用终止当前线程</li>
+<li>不会调用 <code>atexit</code></li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -929,6 +1331,9 @@
 
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -993,7 +1398,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1006,7 +1411,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

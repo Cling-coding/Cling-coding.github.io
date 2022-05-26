@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="旅行推销商问题TSP优化问题 输入：带权的完全图 输出：哈密尔顿回路 目标：minimize总权值 属于NPO(V)问题 满足三角不等式的TSP子问题任意三个顶点之间的权值满足三角不等式 这个条件的意义在哪里？任意一条边的权小于连接其端点的任意一条简单通路的权，因为是完全图所以容易证明 最小生成树最小代价保持连通图中的点仍然互连 DFS在树的基础上构造哈密尔顿回路 哈密尔顿回路要求每个点只经过一次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="codewithssy">
+<meta property="og:url" content="http://example.com/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="codewithssy">
+<meta property="og:description" content="旅行推销商问题TSP优化问题 输入：带权的完全图 输出：哈密尔顿回路 目标：minimize总权值 属于NPO(V)问题 满足三角不等式的TSP子问题任意三个顶点之间的权值满足三角不等式 这个条件的意义在哪里？任意一条边的权小于连接其端点的任意一条简单通路的权，因为是完全图所以容易证明 最小生成树最小代价保持连通图中的点仍然互连 DFS在树的基础上构造哈密尔顿回路 哈密尔顿回路要求每个点只经过一次">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-19T00:27:02.484Z">
+<meta property="article:modified_time" content="2022-04-20T16:16:29.725Z">
+<meta property="article:author" content="SUN Shiyu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | codewithssy</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">codewithssy</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">SUN Shiyu的个人网站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SUN Shiyu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="codewithssy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-19 08:27:02" itemprop="dateCreated datePublished" datetime="2022-04-19T08:27:02+08:00">2022-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-21 00:16:29" itemprop="dateModified" datetime="2022-04-21T00:16:29+08:00">2022-04-21</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="旅行推销商问题TSP"><a href="#旅行推销商问题TSP" class="headerlink" title="旅行推销商问题TSP"></a>旅行推销商问题TSP</h1><p>优化问题</p>
+<p>输入：带权的完全图</p>
+<p>输出：哈密尔顿回路</p>
+<p>目标：minimize总权值</p>
+<p>属于NPO(V)问题</p>
+<h2 id="满足三角不等式的TSP子问题"><a href="#满足三角不等式的TSP子问题" class="headerlink" title="满足三角不等式的TSP子问题"></a>满足三角不等式的TSP子问题</h2><p>任意三个顶点之间的权值满足三角不等式</p>
+<h3 id="这个条件的意义在哪里？"><a href="#这个条件的意义在哪里？" class="headerlink" title="这个条件的意义在哪里？"></a>这个条件的意义在哪里？</h3><p>任意一条边的权小于连接其端点的任意一条简单通路的权，因为是完全图所以容易证明</p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><p>最小代价保持连通图中的点仍然互连</p>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>在树的基础上构造哈密尔顿回路</p>
+<p>哈密尔顿回路要求每个点只经过一次：按照访问的顺序</p>
+<p>结果并不唯一</p>
+<h3 id="Algorithm-4-3-5-1-L-Delta"><a href="#Algorithm-4-3-5-1-L-Delta" class="headerlink" title="Algorithm 4.3.5.1 $L_{\Delta}$"></a>Algorithm 4.3.5.1 $L_{\Delta}$</h3><p>step1：构造最小生成树</p>
+<p>step2：选择任意一点，执行DFS，利用DFS trail每条边走两遍，生成哈密尔顿回路</p>
+<p>一定是可行解，但不一定是最优解</p>
+<p>多项式时间算法</p>
+<h4 id="2-近似算法"><a href="#2-近似算法" class="headerlink" title="2-近似算法"></a>2-近似算法</h4><p>证明：</p>
+<p>$cost(T)= \sum_{e\in E(T)}c(e)\leq cost(H_{Opt})$</p>
+<p>因为将最优解删去一条边就能得到一个生成树，这个树的权值和一定不小于最小生成树</p>
+<p>$cost(\bar H)\leq cost(W)\leq 2·cost(H_{Opt})$</p>
+<p>得到近似比为2</p>
+<p>证明细节：</p>
+<p>因为W是DFS的路径，最小生成树的每条边来回走了两次所以有</p>
+<p>$cost(W)=2·cost(T)\leq 2·cost(H_{Opt})$</p>
+<p>又因为生成哈密尔顿回路是将W的路径替换成边，由三角不等式可以得到：</p>
+<p>$cost(\bar H)\leq cost(W)$</p>
+<h4 id="Worst-Case"><a href="#Worst-Case" class="headerlink" title="Worst Case"></a>Worst Case</h4><p>p287</p>
+<h4 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h4><p>消除奇次顶点，一定成对出现，配对加边生成超图，可能有重边$\rightarrow$一定有欧拉回路</p>
+<h3 id="Algorithm-4-3-5-4"><a href="#Algorithm-4-3-5-4" class="headerlink" title="Algorithm 4.3.5.4"></a>Algorithm 4.3.5.4</h3><p>step1：最小生成树</p>
+<p>step2：遍历生成度数为奇数的点的集合S</p>
+<p>step3：在集合S上构造权重最小的完美匹配M（没有公共点的边集）</p>
+<p>step4：在树的基础上添加匹配里的边，可能会有重边，构造欧拉回路</p>
+<p>step5：缩短欧拉回路（删除已经出现过的点），构造哈密尔顿回路H</p>
+<h4 id="1-5-近似算法"><a href="#1-5-近似算法" class="headerlink" title="1.5-近似算法"></a>1.5-近似算法</h4><p>证明：</p>
+<h4 id="最坏情况的例子"><a href="#最坏情况的例子" class="headerlink" title="最坏情况的例子"></a>最坏情况的例子</h4><p>教材page 294</p>
+<h3 id="Algorithm-4-3-5-18-SEKANINA‘S-ALGORITHM"><a href="#Algorithm-4-3-5-18-SEKANINA‘S-ALGORITHM" class="headerlink" title="Algorithm 4.3.5.18. SEKANINA‘S ALGORITHM"></a>Algorithm 4.3.5.18. SEKANINA‘S ALGORITHM</h3><p>step1：最小生成树</p>
+<p>step2：构建$T^3$</p>
+<p>step3：找一条哈密尔顿回路使得包含树T的每一条边两次</p>
+<h4 id="Lemma-4-3-5-17"><a href="#Lemma-4-3-5-17" class="headerlink" title="Lemma 4.3.5.17."></a>Lemma 4.3.5.17.</h4><ul>
+<li>$T^3$中一定有哈密尔顿回路</li>
+<li>$P_T(H)$中，$E(T)$的每条边（最多？）出现两次</li>
+<li>数学归纳法证明</li>
+</ul>
+<h4 id="2-近似算法-1"><a href="#2-近似算法-1" class="headerlink" title="2-近似算法"></a>2-近似算法</h4><p>证明:</p>
+<h4 id="算法的意义"><a href="#算法的意义" class="headerlink" title="算法的意义"></a>算法的意义</h4><p>算法对于dist是稳定的，解决近似率恶化太快的问题</p>
+<h2 id="如何对TSP问题进行划分"><a href="#如何对TSP问题进行划分" class="headerlink" title="如何对TSP问题进行划分"></a>如何对TSP问题进行划分</h2><ul>
+<li>p问题<ul>
+<li>满足三角不等式的基础上再进行划分</li>
+</ul>
+</li>
+<li>dist<ul>
+<li>不满足三角不等式</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>SUN Shiyu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/04/19/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98/" title="">http://example.com/2022/04/19/问题求解/旅行推销商问题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/11/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/24/M1%EF%BC%9Apstree/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%95%86%E9%97%AE%E9%A2%98TSP"><span class="nav-number">1.</span> <span class="nav-text">旅行推销商问题TSP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BB%A1%E8%B6%B3%E4%B8%89%E8%A7%92%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84TSP%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">满足三角不等式的TSP子问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%B8%AA%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%84%8F%E4%B9%89%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="nav-number">1.1.1.</span> <span class="nav-text">这个条件的意义在哪里？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.1.2.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS"><span class="nav-number">1.1.3.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm-4-3-5-1-L-Delta"><span class="nav-number">1.1.4.</span> <span class="nav-text">Algorithm 4.3.5.1 $L_{\Delta}$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">2-近似算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Worst-Case"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Worst Case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">改进</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm-4-3-5-4"><span class="nav-number">1.1.5.</span> <span class="nav-text">Algorithm 4.3.5.4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">1.5-近似算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%9D%8F%E6%83%85%E5%86%B5%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">最坏情况的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm-4-3-5-18-SEKANINA%E2%80%98S-ALGORITHM"><span class="nav-number">1.1.6.</span> <span class="nav-text">Algorithm 4.3.5.18. SEKANINA‘S ALGORITHM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lemma-4-3-5-17"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">Lemma 4.3.5.17.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95-1"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">2-近似算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">1.1.6.3.</span> <span class="nav-text">算法的意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AF%B9TSP%E9%97%AE%E9%A2%98%E8%BF%9B%E8%A1%8C%E5%88%92%E5%88%86"><span class="nav-number">1.2.</span> <span class="nav-text">如何对TSP问题进行划分</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">SUN Shiyu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2022-3-21 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SUN Shiyu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
